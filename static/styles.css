@@ -1,0 +1,14 @@
+@import url("/products.css");
+@import url("/films.css");
+@import url("menu.css");
+@import url("checkout.css");
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+body,
+h1,
+span {
+  font-family: "Nunito", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
