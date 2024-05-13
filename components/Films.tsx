@@ -1,5 +1,5 @@
 import { FunctionComponent } from "preact";
-import { Film, Product } from "../types.ts";
+import { Film, Project } from "../types.ts";
 import { Signal } from "@preact/signals";
 import { useState } from "preact/hooks";
 import AddFilm from "../islands/AddFilm.tsx";
@@ -20,7 +20,11 @@ const Films: FunctionComponent<Props> = (
   { films, name, brand, iso, format, color },
 ) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [pModalOpen, setPModalOpen] = useState<boolean>(false);
+  const [cModalOpen, setCModalOpen] = useState<boolean>(false);
   const [activeFilm, setActiveFilm] = useState<Film>(films[0]);
+  const [projectName, setProjectName] = useState("");
+  const [projectDesc, setProjectDesc] = useState("");
 
   if (name.value !== "") {
     films = films.filter((film) =>
@@ -57,6 +61,38 @@ const Films: FunctionComponent<Props> = (
 
   const closeModal = () => {
     setModalOpen(false);
+    setPModalOpen(false);
+    setCModalOpen(false);
+  };
+
+  const openPModal = () => {
+    const cookies = document.cookie.split("; ");
+    const projectsCookie = cookies.find((cookie) =>
+      cookie.startsWith("projects=")
+    );
+    // .... que desastre
+
+    setPModalOpen(true);
+  };
+
+  const createProject = () => {
+    const cookies = document.cookie.split("; ");
+    const projectsCookie = cookies.find((cookie) =>
+      cookie.startsWith("projects=")
+    );
+    if (!projectsCookie) {
+      document.cookie = `projects=${
+        JSON.stringify([
+          { projectName, projectDesc, films: [] },
+        ])
+      }; path=/`;
+    } else {
+      const projects: Project[] = JSON.parse(projectsCookie.split("=")[1]);
+      projects.push({ projectName, projectDesc, films: [] });
+      document.cookie = `cart=${JSON.stringify(projects)}; path=/`; // we must set the path to / so the cookie is available in all pages
+    }
+
+    setCModalOpen(false);
   };
 
   return (
@@ -85,12 +121,13 @@ const Films: FunctionComponent<Props> = (
           </div>
         ))}
       </div>
+
       {modalOpen && (
         <div class="modal">
           <div class="modal-content">
             <div class="modal-header">
               <h1>{activeFilm.name}</h1>
-              <button class="button" onClick={closeModal}>X</button>
+              <button class="button-close" onClick={closeModal}>X</button>
             </div>
             <div class="item">
               <img src={activeFilm.staticImageUrl} alt={activeFilm.name} />
@@ -109,6 +146,58 @@ const Films: FunctionComponent<Props> = (
                 <span class="description">{activeFilm.description}</span>
               </div>
             </div>
+            <button class="button" onClick={openPModal}>
+              Add to Project
+            </button>
+          </div>
+        </div>
+      )}
+
+      {pModalOpen && (
+        <div class="pmodal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1>Projects</h1>
+              <button class="button-close" onClick={closeModal}>X</button>
+            </div>
+            <div class="item">
+              <div class="details">
+                <span class="brand">List of Projects</span>
+              </div>
+            </div>
+            <button class="button" onClick={() => setCModalOpen(true)}>
+              Create Project
+            </button>
+          </div>
+        </div>
+      )}
+
+      {cModalOpen && (
+        <div class="pmodal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1>New Project</h1>
+              <button class="button-close" onClick={closeModal}>X</button>
+            </div>
+            <div class="item">
+              <div class="details">
+                <input
+                  type="text"
+                  placeholder="Project Name"
+                  value={projectName}
+                  onChange={(e) => setProjectName(e.currentTarget.value)}
+                />
+                <input
+                  type="text"
+                  placeholder="Description"
+                  value={projectDesc}
+                  onChange={(e) => setProjectDesc(e.currentTarget.value)}
+                />
+              </div>
+            </div>
+            <button class="button" onClick={createProject}>
+              Save Project
+            </button>
           </div>
         </div>
       )}

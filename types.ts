@@ -59,3 +59,9 @@ export type Country = {
   name: string;
   code: string;
 };
+
+export type Project = {
+  projectName: string;
+  projectDesc: string;
+  films: Film[];
+};
