@@ -2,7 +2,7 @@ import { FunctionComponent } from "preact";
 import { Film, Project } from "../types.ts";
 import { Signal } from "@preact/signals";
 import { useState } from "preact/hooks";
-import AddFilm from "../islands/AddFilm.tsx";
+import AddFilm from "./AddFilm.tsx";
 // import { brand } from "../signals/Brand.ts";
 // import { iso } from "../signals/ISO.ts";
 // import { format } from "../signals/Format.ts";
@@ -16,7 +16,7 @@ type Props = {
   color: Signal<string>;
 };
 
-const Films: FunctionComponent<Props> = (
+const FilmCatalogue: FunctionComponent<Props> = (
   { films, name, brand, iso, format, color },
 ) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
@@ -97,7 +97,7 @@ const Films: FunctionComponent<Props> = (
 
   return (
     <>
-      <div class="films">
+      <div class="catalogue">
         {films.map((film) => (
           <div
             class="item"
@@ -205,4 +205,4 @@ const Films: FunctionComponent<Props> = (
   );
 };
 
-export default Films;
+export default FilmCatalogue;

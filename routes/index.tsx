@@ -2,7 +2,7 @@ import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
 // import LoversHome from "../islands/LoversHome.tsx";
 import { Film } from "../types.ts";
 import { getFilms } from "../lib.ts";
-import Films from "../components/Films.tsx";
+import Films from "../islands/FilmCatalogue.tsx";
 import FilmsHome from "../islands/FilmsHome.tsx";
 import SearchBar from "../islands/SearchBar.tsx";
 import BrandSelect from "../islands/BrandSelect.tsx";

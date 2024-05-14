@@ -11,7 +11,7 @@ const SearchBar: FunctionComponent<Props> = ({ name }) => {
 
   return (
     <div className="search-bar-container">
-      <label class="filter-label" for="brand">Film Name</label>
+      <label class="filter-label" for="name">Film Name</label>
       <input
         type="text"
         id = "name"

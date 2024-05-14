@@ -22,7 +22,7 @@ const HSelect : FunctionComponent<Props> = ({ options, activeOption }) => {
     <div class="hselect">
       {options.map((option) => (
         <button
-          class={`hselect-button ${activeOption.value === option ? "active" : ""}`}
+          class={`button ${activeOption.value === option ? "active" : ""}`}
           onClick={() => handleClick(option)}
         >
           {option}

@@ -21,7 +21,9 @@ import * as $ColorHSelect from "./islands/ColorHSelect.tsx";
 import * as $ColorSelect from "./islands/ColorSelect.tsx";
 import * as $CountrySelect from "./islands/CountrySelect.tsx";
 import * as $DecreaseProduct from "./islands/DecreaseProduct.tsx";
+import * as $FilmCatalogue from "./islands/FilmCatalogue.tsx";
 import * as $FilmsHome from "./islands/FilmsHome.tsx";
+import * as $Filters from "./islands/Filters.tsx";
 import * as $FormatHSelect from "./islands/FormatHSelect.tsx";
 import * as $FormatSelect from "./islands/FormatSelect.tsx";
 import * as $ISOHSelect from "./islands/ISOHSelect.tsx";
@@ -53,7 +55,9 @@ const manifest = {
     "./islands/ColorSelect.tsx": $ColorSelect,
     "./islands/CountrySelect.tsx": $CountrySelect,
     "./islands/DecreaseProduct.tsx": $DecreaseProduct,
+    "./islands/FilmCatalogue.tsx": $FilmCatalogue,
     "./islands/FilmsHome.tsx": $FilmsHome,
+    "./islands/Filters.tsx": $Filters,
     "./islands/FormatHSelect.tsx": $FormatHSelect,
     "./islands/FormatSelect.tsx": $FormatSelect,
     "./islands/ISOHSelect.tsx": $ISOHSelect,
