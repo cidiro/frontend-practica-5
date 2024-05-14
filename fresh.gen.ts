@@ -7,6 +7,7 @@ import * as $_app from "./routes/_app.tsx";
 import * as $_layout from "./routes/_layout.tsx";
 import * as $cart from "./routes/cart.tsx";
 import * as $checkout from "./routes/checkout.tsx";
+import * as $films from "./routes/films.tsx";
 import * as $greet_name_ from "./routes/greet/[name].tsx";
 import * as $index from "./routes/index.tsx";
 import * as $products_product_ from "./routes/products/[product].tsx";
@@ -22,7 +23,7 @@ import * as $ColorSelect from "./islands/ColorSelect.tsx";
 import * as $CountrySelect from "./islands/CountrySelect.tsx";
 import * as $DecreaseProduct from "./islands/DecreaseProduct.tsx";
 import * as $FilmCatalogue from "./islands/FilmCatalogue.tsx";
-import * as $FilmsHome from "./islands/FilmsHome.tsx";
+import * as $FilmModal from "./islands/FilmModal.tsx";
 import * as $Filters from "./islands/Filters.tsx";
 import * as $FormatHSelect from "./islands/FormatHSelect.tsx";
 import * as $FormatSelect from "./islands/FormatSelect.tsx";
@@ -39,6 +40,7 @@ const manifest = {
     "./routes/_layout.tsx": $_layout,
     "./routes/cart.tsx": $cart,
     "./routes/checkout.tsx": $checkout,
+    "./routes/films.tsx": $films,
     "./routes/greet/[name].tsx": $greet_name_,
     "./routes/index.tsx": $index,
     "./routes/products/[product].tsx": $products_product_,
@@ -56,7 +58,7 @@ const manifest = {
     "./islands/CountrySelect.tsx": $CountrySelect,
     "./islands/DecreaseProduct.tsx": $DecreaseProduct,
     "./islands/FilmCatalogue.tsx": $FilmCatalogue,
-    "./islands/FilmsHome.tsx": $FilmsHome,
+    "./islands/FilmModal.tsx": $FilmModal,
     "./islands/Filters.tsx": $Filters,
     "./islands/FormatHSelect.tsx": $FormatHSelect,
     "./islands/FormatSelect.tsx": $FormatSelect,

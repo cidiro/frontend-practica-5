@@ -1,28 +1,13 @@
-import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
-// import LoversHome from "../islands/LoversHome.tsx";
-import { Film } from "../types.ts";
-import { getFilms } from "../lib.ts";
-import Films from "../islands/FilmCatalogue.tsx";
-import FilmsHome from "../islands/FilmsHome.tsx";
-import SearchBar from "../islands/SearchBar.tsx";
-import BrandSelect from "../islands/BrandSelect.tsx";
-import ISOSelect from "../islands/ISOSelect.tsx";
-import FormatSelect from "../islands/FormatSelect.tsx";
-import { useSignal } from "@preact/signals";
+import { Handlers } from "$fresh/server.ts";
 
 export const handler: Handlers = {
-  GET: async (
-    _req: Request,
-    ctx: FreshContext<unknown, { films: Film[] }>,
-  ) => {
-    const films = await getFilms();
-    return ctx.render({ films });
+  GET: () => {
+    const headers = new Headers({
+      location: "/films",
+    });
+    return new Response(null, {
+      status: 302,
+      headers,
+    });
   },
 };
-
-const Home = (props: PageProps<{ films: Film[] }>) => (
-  <FilmsHome films={props.data.films} />
-);
-
-
-export default Home;

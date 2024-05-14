@@ -14,15 +14,16 @@ type Props = {
   iso: Signal<string>;
   format: Signal<string>;
   color: Signal<string>;
+  activeFilm: Signal<Film | null>;
 };
 
 const FilmCatalogue: FunctionComponent<Props> = (
-  { films, name, brand, iso, format, color },
+  { films, name, brand, iso, format, color, activeFilm },
 ) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [pModalOpen, setPModalOpen] = useState<boolean>(false);
   const [cModalOpen, setCModalOpen] = useState<boolean>(false);
-  const [activeFilm, setActiveFilm] = useState<Film>(films[0]);
+  // const [activeFilm.value, setActiveFilm] = useState<Film>(films[0]);
   const [projectName, setProjectName] = useState("");
   const [projectDesc, setProjectDesc] = useState("");
 
@@ -53,11 +54,6 @@ const FilmCatalogue: FunctionComponent<Props> = (
       color.value == "color" ? film.color : !film.color
     );
   }
-
-  const handleClick = (film: Film) => {
-    setModalOpen(true);
-    setActiveFilm(film);
-  };
 
   const closeModal = () => {
     setModalOpen(false);
@@ -102,7 +98,9 @@ const FilmCatalogue: FunctionComponent<Props> = (
           <div
             class="item"
             key={film._id}
-            onClick={() => handleClick(film)}
+            onClick={() => {
+              activeFilm.value = film;
+            }}
           >
             <img src={film.staticImageUrl} alt={film.name} />
             <div class="details">
@@ -122,28 +120,28 @@ const FilmCatalogue: FunctionComponent<Props> = (
         ))}
       </div>
 
-      {modalOpen && (
+      {/* {modalOpen && (
         <div class="modal">
           <div class="modal-content">
             <div class="modal-header">
-              <h1>{activeFilm.name}</h1>
+              <h1>{activeFilm.value.name}</h1>
               <button class="button-close" onClick={closeModal}>X</button>
             </div>
             <div class="item">
-              <img src={activeFilm.staticImageUrl} alt={activeFilm.name} />
+              <img src={activeFilm.value.staticImageUrl} alt={activeFilm.value.name} />
               <div class="details">
-                <span class="brand">Brand: {activeFilm.brand}</span>
+                <span class="brand">Brand: {activeFilm.value.brand}</span>
                 <span class="iso">
                   Format:
-                  {activeFilm.formatOneTwenty && activeFilm.formatThirtyFive
+                  {activeFilm.value.formatOneTwenty && activeFilm.value.formatThirtyFive
                     ? "35mm & 120"
-                    : activeFilm.formatOneTwenty
+                    : activeFilm.value.formatOneTwenty
                     ? "120"
-                    : activeFilm.formatThirtyFive
+                    : activeFilm.value.formatThirtyFive
                     ? "35mm"
                     : "Unknown"}
                 </span>
-                <span class="description">{activeFilm.description}</span>
+                <span class="description">{activeFilm.value.description}</span>
               </div>
             </div>
             <button class="button" onClick={openPModal}>
@@ -151,7 +149,7 @@ const FilmCatalogue: FunctionComponent<Props> = (
             </button>
           </div>
         </div>
-      )}
+      )} */}
 
       {pModalOpen && (
         <div class="pmodal">
