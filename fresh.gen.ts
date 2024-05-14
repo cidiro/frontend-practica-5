@@ -7,6 +7,7 @@ import * as $_app from "./routes/_app.tsx";
 import * as $_layout from "./routes/_layout.tsx";
 import * as $cart from "./routes/cart.tsx";
 import * as $checkout from "./routes/checkout.tsx";
+import * as $film_id_ from "./routes/film/[id].tsx";
 import * as $films from "./routes/films.tsx";
 import * as $greet_name_ from "./routes/greet/[name].tsx";
 import * as $index from "./routes/index.tsx";
@@ -40,6 +41,7 @@ const manifest = {
     "./routes/_layout.tsx": $_layout,
     "./routes/cart.tsx": $cart,
     "./routes/checkout.tsx": $checkout,
+    "./routes/film/[id].tsx": $film_id_,
     "./routes/films.tsx": $films,
     "./routes/greet/[name].tsx": $greet_name_,
     "./routes/index.tsx": $index,

@@ -47,7 +47,9 @@ const FilmModal: FunctionComponent<Props> = (
               <button
                 class="button-projects"
                 onClick={() => {
-                  projectsActive.value = true;
+                  if (film.value) {
+                    window.location.href = "/film/" + film.value._id;
+                  }
                 }}
               >
                 View Details
@@ -55,9 +57,7 @@ const FilmModal: FunctionComponent<Props> = (
               <button
                 class="button-details"
                 onClick={() => {
-                  if (film.value) {
-                    window.location.href = "/item/" + film.value._id;
-                  }
+                  projectsActive.value = true;
                 }}
               >
                 Add to Project
