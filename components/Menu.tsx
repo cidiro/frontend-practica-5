@@ -4,11 +4,8 @@ import { FunctionComponent } from "preact";
 const Menu: FunctionComponent = () => {
   return (
     <div class="menu">
-      <a href="">Films</a>
+      <a href="/films">Films</a>
       <a href="/projects">Projects</a>
-      {/* <a href="/cart">
-        Shopping cart <NumCarrito />
-      </a> */}
     </div>
   );
 };
