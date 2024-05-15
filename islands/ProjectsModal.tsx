@@ -46,13 +46,13 @@ const ProjectsModal: FunctionComponent<Props> = (
                     <div class="button-container">
                       <button key={index}>
                         <span class="name">
-                          {project.name.length > 20
-                            ? `${project.name.slice(0, 17)}...`
+                          {project.name.length > 25
+                            ? `${project.name.slice(0, 22)}...`
                             : project.name}
                         </span>
                         <span class="description">
-                          {project.description.length > 50
-                            ? `${project.description.slice(0, 47)}...`
+                          {project.description.length > 55
+                            ? `${project.description.slice(0, 52)}...`
                             : project.description}
                         </span>
                       </button>
