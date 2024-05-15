@@ -2,6 +2,7 @@ import { FunctionComponent } from "preact";
 import { Signal } from "@preact/signals";
 import HSelect from "../components/HSelect.tsx";
 import { Film } from "../types.ts";
+import { pascalize } from "../lib.ts";
 
 type Props = {
   films: Film[];
@@ -15,13 +16,15 @@ type Props = {
 const Filters: FunctionComponent<Props> = (
   { films, name, brand, iso, format, color },
 ) => {
-  const brands = [...new Set(films.map((film) => film.brand))].sort();
-  const isos = [...new Set(films.map((film) => film.iso.toString()))].sort((
-    a,
-    b,
-  ) => Number(a) - Number(b));
+  const brands = [...new Set(films.map((film) => pascalize(film.brand)))]
+    .sort();
+  const isos = [...new Set(films.map((film) => pascalize(film.iso.toString())))]
+    .sort((
+      a,
+      b,
+    ) => Number(a) - Number(b));
   const formats = ["35", "120"];
-  const colors = ["color", "B&W"];
+  const colors = ["Color", "B&W"];
 
   return (
     <div class="filters">

@@ -1,5 +1,5 @@
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
-import { getFilm, capitalize } from "../../lib.ts";
+import { getFilm, capitalize, pascalize } from "../../lib.ts";
 import { Film } from "../../types.ts";
 
 export const handler: Handlers = {
@@ -28,11 +28,11 @@ const Page = (props: PageProps<{ film: Film }>) => {
 
   return (
     <div class="film">
-      <h1>{film.name}</h1>
+      <h1>{pascalize(film.name)}</h1>
       <div class="body">
         <img src={film.staticImageUrl} alt={film.name} />
         <div class="details">
-          <span class="brand">Brand: {film.brand}</span>
+          <span class="brand">Brand: {pascalize(film.brand)}</span>
           <span class="iso">
             Format:
             {film.formatOneTwenty && film.formatThirtyFive
