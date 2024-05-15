@@ -84,7 +84,7 @@ const FilmCatalogue: FunctionComponent<Props> = (
       }; path=/`;
     } else {
       const projects: Project[] = JSON.parse(projectsCookie.split("=")[1]);
-      projects.push({ projectName, projectDesc, films: [] });
+      projects.push({ name: projectName, description: projectDesc, films: [] });
       document.cookie = `cart=${JSON.stringify(projects)}; path=/`; // we must set the path to / so the cookie is available in all pages
     }
 
@@ -120,7 +120,8 @@ const FilmCatalogue: FunctionComponent<Props> = (
         ))}
       </div>
 
-      {/* {modalOpen && (
+      {
+        /* {modalOpen && (
         <div class="modal">
           <div class="modal-content">
             <div class="modal-header">
@@ -149,7 +150,8 @@ const FilmCatalogue: FunctionComponent<Props> = (
             </button>
           </div>
         </div>
-      )} */}
+      )} */
+      }
 
       {pModalOpen && (
         <div class="pmodal">

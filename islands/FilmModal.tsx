@@ -23,7 +23,7 @@ const FilmModal: FunctionComponent<Props> = (
                   film.value = null;
                 }}
               >
-                X
+                ✖
               </button>
             </div>
             <div class="body">
@@ -46,7 +46,6 @@ const FilmModal: FunctionComponent<Props> = (
             </div>
             <div class="footer">
               <button
-                class="button-projects"
                 onClick={() => {
                   if (film.value) {
                     window.location.href = "/film/" + film.value._id;
@@ -56,7 +55,6 @@ const FilmModal: FunctionComponent<Props> = (
                 View Details
               </button>
               <button
-                class="button-details"
                 onClick={() => {
                   projectsActive.value = true;
                 }}

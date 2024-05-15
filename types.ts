@@ -61,7 +61,7 @@ export type Country = {
 };
 
 export type Project = {
-  projectName: string;
-  projectDesc: string;
+  name: string;
+  description: string;
   films: Film[];
 };

@@ -1,9 +1,11 @@
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
-import { Film } from "../types.ts";
+import { Film, Project } from "../types.ts";
 import { getFilms } from "../lib.ts";
 import Filters from "../islands/Filters.tsx";
 import FilmCatalogue from "../islands/FilmCatalogue.tsx";
 import FilmModal from "../islands/FilmModal.tsx";
+import ProjectsModal from "../islands/ProjectsModal.tsx";
+import NewProjectModal from "../islands/NewProjectModal.tsx";
 import { useSignal } from "@preact/signals";
 
 export const handler: Handlers = {
@@ -24,6 +26,7 @@ const Page = (props: PageProps<{ films: Film[] }>) => {
   const color = useSignal<string>("");
   const activeFilm = useSignal<Film | null>(null);
   const projectsModalActive = useSignal<boolean>(false);
+  const newProjectModalActive = useSignal<boolean>(false);
 
   return (
     <div class="home">
@@ -48,6 +51,13 @@ const Page = (props: PageProps<{ films: Film[] }>) => {
       <FilmModal
         film={activeFilm}
         projectsActive={projectsModalActive}
+      />
+      <ProjectsModal
+        active={projectsModalActive}
+        newProjectActive={newProjectModalActive}
+      />
+      <NewProjectModal
+        active={newProjectModalActive}
       />
     </div>
   );

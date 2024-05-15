@@ -1,5 +1,5 @@
 import Axios from "npm:axios";
-import { BadLover, Lover, Film } from "./types.ts";
+import { BadLover, Film, Lover, Project } from "./types.ts";
 
 export const getLover = async (name: string): Promise<BadLover | null> => {
   const response = await Axios.get<BadLover>(
@@ -30,13 +30,16 @@ export const getFilms = async (): Promise<Film[]> => {
 export const getFilm = async (id: string): Promise<Film | null> => {
   const films = await getFilms();
   return films.find((film) => film._id === id) || null;
-}
+};
 
 export const capitalize = (s: string): string => {
   return s.charAt(0).toUpperCase() + s.slice(1);
-}
+};
 
-export const addLover = async (lover: Lover, password: string): Promise<void> => {
+export const addLover = async (
+  lover: Lover,
+  password: string,
+): Promise<void> => {
   await Axios.post("https://lovers.deno.dev/", {
     name: lover.name,
     password: password,
@@ -46,7 +49,7 @@ export const addLover = async (lover: Lover, password: string): Promise<void> =>
     hobbies: lover.hobbies,
     photo: lover.photo,
     comments: lover.comments,
-    })
+  })
     .then((response) => {
       console.log(response);
     })
@@ -88,13 +91,17 @@ export const getCookies = (req: Request): Record<string, string> => {
       return [name, decodeURIComponent(rest.join("="))];
     }),
   );
-}
+};
 
 export const fixBadLover = (lover: BadLover): Lover => {
   return {
     ...lover,
     age: Number(lover.age),
-    hobbies: Array.isArray(lover.hobbies) ? lover.hobbies : (lover.hobbies ? [lover.hobbies] : []),
-    comments: Array.isArray(lover.comments) ? lover.comments : (lover.comments ? [{user: "", message: lover.comments}] : []),
+    hobbies: Array.isArray(lover.hobbies)
+      ? lover.hobbies
+      : (lover.hobbies ? [lover.hobbies] : []),
+    comments: Array.isArray(lover.comments)
+      ? lover.comments
+      : (lover.comments ? [{ user: "", message: lover.comments }] : []),
   };
-}
+};

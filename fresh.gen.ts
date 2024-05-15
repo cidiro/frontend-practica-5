@@ -30,7 +30,9 @@ import * as $FormatHSelect from "./islands/FormatHSelect.tsx";
 import * as $FormatSelect from "./islands/FormatSelect.tsx";
 import * as $ISOHSelect from "./islands/ISOHSelect.tsx";
 import * as $ISOSelect from "./islands/ISOSelect.tsx";
+import * as $NewProjectModal from "./islands/NewProjectModal.tsx";
 import * as $NumCarrito from "./islands/NumCarrito.tsx";
+import * as $ProjectsModal from "./islands/ProjectsModal.tsx";
 import * as $SearchBar from "./islands/SearchBar.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
@@ -66,7 +68,9 @@ const manifest = {
     "./islands/FormatSelect.tsx": $FormatSelect,
     "./islands/ISOHSelect.tsx": $ISOHSelect,
     "./islands/ISOSelect.tsx": $ISOSelect,
+    "./islands/NewProjectModal.tsx": $NewProjectModal,
     "./islands/NumCarrito.tsx": $NumCarrito,
+    "./islands/ProjectsModal.tsx": $ProjectsModal,
     "./islands/SearchBar.tsx": $SearchBar,
   },
   baseUrl: import.meta.url,
