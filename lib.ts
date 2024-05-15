@@ -27,6 +27,15 @@ export const getFilms = async (): Promise<Film[]> => {
   }
 };
 
+export const getFilm = async (id: string): Promise<Film | null> => {
+  const films = await getFilms();
+  return films.find((film) => film._id === id) || null;
+}
+
+export const capitalize = (s: string): string => {
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
 export const addLover = async (lover: Lover, password: string): Promise<void> => {
   await Axios.post("https://lovers.deno.dev/", {
     name: lover.name,

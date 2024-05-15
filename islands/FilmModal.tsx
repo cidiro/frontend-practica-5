@@ -33,13 +33,14 @@ const FilmModal: FunctionComponent<Props> = (
                 <span class="iso">
                   Format:
                   {film.value.formatOneTwenty && film.value.formatThirtyFive
-                    ? "35mm & 120"
+                    ? " 35mm & 120"
                     : film.value.formatOneTwenty
-                    ? "120"
+                    ? " 120"
                     : film.value.formatThirtyFive
-                    ? "35mm"
-                    : "Unknown"}
+                    ? " 35mm"
+                    : " Unknown"}
                 </span>
+                <span class="iso">ISO: {film.value.iso}</span>
                 <span class="description">{film.value.description}</span>
               </div>
             </div>

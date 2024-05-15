@@ -11,7 +11,7 @@ export type Film = {
   description: string;
   keyFeatures: {
     _id: string;
-    name: string;
+    feature: string;
   }[];
 };
 
