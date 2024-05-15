@@ -54,6 +54,7 @@ const Page = (props: PageProps<{ films: Film[] }>) => {
       />
       <ProjectsModal
         active={projectsModalActive}
+        film={activeFilm}
         newProjectActive={newProjectModalActive}
       />
       <NewProjectModal

@@ -5,11 +5,12 @@ import { Film, Project } from "../types.ts";
 
 type Props = {
   active: Signal<boolean>;
+  film: Signal<Film | null>;
   newProjectActive: Signal<boolean>;
 };
 
 const ProjectsModal: FunctionComponent<Props> = (
-  { active, newProjectActive },
+  { active, film, newProjectActive },
 ) => {
   const [projects, setProjects] = useState<Project[]>([]);
 
@@ -22,6 +23,29 @@ const ProjectsModal: FunctionComponent<Props> = (
     }
     setProjects(projects ? JSON.parse(projects.split("=")[1]) : []);
   }, []);
+
+  const addFilmToProject = (project: string) => {
+    // const cookies = document.cookie.split("; ");
+    // const projectsCookie =
+    //   cookies.find((cookie) => cookie.startsWith("projects=")) || "";
+
+    // const projects = projectsCookie
+    //   ? JSON.parse(projectsCookie.split("=")[1])
+    //   : [];
+    if (!film.value) {
+      return;
+    }
+
+    const updatedProjects = projects.map((p: Project) => {
+      if (p.name === project && film.value !== null) {
+        p.films.push(film.value);
+      }
+      return p;
+    });
+
+    document.cookie = `projects=${JSON.stringify(updatedProjects)}; path=/`;
+    active.value = false;
+  };
 
   return (
     <>
@@ -44,7 +68,12 @@ const ProjectsModal: FunctionComponent<Props> = (
                 {projects.length
                   ? projects.map((project, index) => (
                     <div class="button-container">
-                      <button key={index}>
+                      <button
+                        key={index}
+                        onClick={() => {
+                          addFilmToProject(project.name);
+                        }}
+                      >
                         <span class="name">
                           {project.name.length > 25
                             ? `${project.name.slice(0, 22)}...`
