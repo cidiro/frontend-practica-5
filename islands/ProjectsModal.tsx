@@ -25,13 +25,6 @@ const ProjectsModal: FunctionComponent<Props> = (
   }, []);
 
   const addFilmToProject = (project: string) => {
-    // const cookies = document.cookie.split("; ");
-    // const projectsCookie =
-    //   cookies.find((cookie) => cookie.startsWith("projects=")) || "";
-
-    // const projects = projectsCookie
-    //   ? JSON.parse(projectsCookie.split("=")[1])
-    //   : [];
     if (!film.value) {
       return;
     }

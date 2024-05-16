@@ -1,5 +1,5 @@
 import { FunctionComponent } from "preact";
-import { Film, Project } from "../types.ts";
+import { Film } from "../types.ts";
 import { Signal } from "@preact/signals";
 import { pascalize } from "../lib.ts";
 

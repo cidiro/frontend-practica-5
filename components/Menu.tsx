@@ -1,5 +1,4 @@
 import { FunctionComponent } from "preact";
-// import NumCarrito from "../islands/NumCarrito.tsx";
 
 const Menu: FunctionComponent = () => {
   return (

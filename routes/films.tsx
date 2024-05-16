@@ -1,5 +1,5 @@
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
-import { Film, Project } from "../types.ts";
+import { Film } from "../types.ts";
 import { getFilms } from "../lib.ts";
 import Filters from "../islands/Filters.tsx";
 import FilmCatalogue from "../islands/FilmCatalogue.tsx";

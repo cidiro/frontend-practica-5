@@ -1,7 +1,6 @@
 import { FunctionComponent } from "preact";
 import { Signal } from "@preact/signals";
-import { useEffect, useState } from "preact/hooks";
-import { Film, Project } from "../types.ts";
+import { useState } from "preact/hooks";
 
 type Props = {
   active: Signal<boolean>;
@@ -10,18 +9,8 @@ type Props = {
 const NewProjectModal: FunctionComponent<Props> = (
   { active },
 ) => {
-  // const [projects, setProjects] = useState<Project[]>([]);
   const [projectName, setProjectName] = useState("");
   const [projectDesc, setProjectDesc] = useState("");
-
-  // useEffect(() => {
-  //   const cookies = document.cookie.split("; ");
-  //   const projects = cookies.find((cookie) => cookie.startsWith("projects="));
-  //   if (!projects) {
-  //     document.cookie = `projects=; path=/`;
-  //   }
-  //   setProjects(projects ? JSON.parse(projects.split("=")[1]) : []);
-  // }, []);
 
   const saveProject = () => {
     const cookies = document.cookie.split("; ");

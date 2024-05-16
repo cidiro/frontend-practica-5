@@ -1,15 +1,12 @@
 import { FunctionComponent } from "preact";
-import { Product, Film } from "../types.ts";
 import { Signal } from "@preact/signals";
-
 
 type Props = {
   options: string[];
   activeOption: Signal<string>;
 };
 
-
-const HSelect : FunctionComponent<Props> = ({ options, activeOption }) => {
+const HSelect: FunctionComponent<Props> = ({ options, activeOption }) => {
   const handleClick = (option: string) => {
     if (activeOption.value === option) {
       activeOption.value = "";

@@ -9,30 +9,19 @@
     text-align: center;
     border-bottom: 1px solid #ccc;
     padding-bottom: 20px;
-    /* border-bottom-left-radius: 10px; */
-    /* border-bottom-right-radius: 10px; */
-    /* padding-bottom: 20px; */
-    /* padding-left: 40px; */
   }
 
   .body {
     display: flex;
     gap: 30px;
-    /* margin-bottom: 20px; */
-    /* border-bottom: 1px solid #ddd; */
-    /* border-radius: 30px; */
 
     padding-bottom: 20px;
     padding-right: 20px;
 
     img {
       order: 1;
-      /* flex: 1; */
-      /* max-width: 50%; */
       height: 100px;
-      /* object-fit: cover; */
       margin: 20px;
-      /* border-radius: 20px; */
       padding-right: 40px;
       border-right: 1px solid #ccc;
     }
@@ -52,9 +41,6 @@
       .brand,
       .iso {
         order: 2;
-        /* flex: 1;
-      max-width: 50%;
-      display: block; */
       }
 
       .brand {

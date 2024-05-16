@@ -1,5 +1,5 @@
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
-import { getFilm, capitalize, pascalize } from "../../lib.ts";
+import { capitalize, getFilm, pascalize } from "../../lib.ts";
 import { Film } from "../../types.ts";
 
 export const handler: Handlers = {
