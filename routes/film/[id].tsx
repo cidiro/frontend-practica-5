@@ -10,12 +10,11 @@ export const handler: Handlers = {
     const film = await getFilm(ctx.params.id);
 
     if (!film) {
-      const headers = new Headers({
-        location: "/404",
-      });
       return new Response(null, {
-        status: 404,
-        headers,
+        status: 302,
+        headers: {
+          "Location": "/404"
+        }
       });
     }
 

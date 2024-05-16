@@ -1,42 +1,39 @@
 import { FunctionComponent } from "preact";
 import { Signal } from "@preact/signals";
-import { useEffect, useState } from "preact/hooks";
 import { Film, Project } from "../types.ts";
 
 type Props = {
   active: Signal<boolean>;
   film: Signal<Film | null>;
+  projects: Signal<Project[]>;
   newProjectActive: Signal<boolean>;
 };
 
 const ProjectsModal: FunctionComponent<Props> = (
-  { active, film, newProjectActive },
+  { active, film, projects, newProjectActive },
 ) => {
-  const [projects, setProjects] = useState<Project[]>([]);
-
-  useEffect(() => {
-    const cookies = document.cookie.split("; ");
-    const projects = cookies.find((cookie) => cookie.startsWith("projects=")) ||
-      "";
-    if (!projects) {
-      document.cookie = `projects=[]; path=/`;
-    }
-    setProjects(projects ? JSON.parse(projects.split("=")[1]) : []);
-  }, []);
+  // useEffect(() => {
+  //   const cookies = document.cookie.split("; ");
+  //   const projects = cookies.find((cookie) => cookie.startsWith("projects=")) ||
+  //     "";
+  //   if (!projects) {
+  //     document.cookie = `projects=[]; path=/`;
+  //   }
+  //   setProjects(projects ? JSON.parse(projects.split("=")[1]) : []);
+  // }, []);
 
   const addFilmToProject = (project: string) => {
     if (!film.value) {
       return;
     }
 
-    const updatedProjects = projects.map((p: Project) => {
+    projects.value = projects.value.map((p: Project) => {
       if (p.name === project && film.value !== null) {
         p.films.push(film.value);
       }
       return p;
     });
 
-    document.cookie = `projects=${JSON.stringify(updatedProjects)}; path=/`;
     active.value = false;
   };
 
@@ -58,8 +55,8 @@ const ProjectsModal: FunctionComponent<Props> = (
             </div>
             <div class="body">
               <div class="projects">
-                {projects.length
-                  ? projects.map((project, index) => (
+                {projects.value.length
+                  ? projects.value.map((project, index) => (
                     <div class="button-container">
                       <button
                         key={index}

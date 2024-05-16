@@ -1,5 +1,6 @@
 import Axios from "npm:axios";
-import { Film } from "./types.ts";
+import { getCookies, setCookie } from "$std/http/cookie.ts";
+import { Film, Project } from "./types.ts";
 
 export const getFilms = async (): Promise<Film[]> => {
   try {
@@ -16,6 +17,25 @@ export const getFilms = async (): Promise<Film[]> => {
 export const getFilm = async (id: string): Promise<Film | null> => {
   const films = await getFilms();
   return films.find((film) => film._id === id) || null;
+};
+
+export const getProjects = (req: Request): Project[] => {
+  const cookies = getCookies(req.headers);
+  return cookies.projects ? JSON.parse(cookies.projects) : [];
+};
+
+export const addProject = (req: Request, project: Project): void => {
+  const projects = getProjects(req);
+  projects.push(project);
+
+  const headers = new Headers(req.headers)
+  setCookie(headers, {
+    name: "projects",
+    value: JSON.stringify(projects),
+    httpOnly: true,
+    secure: true,
+    path: "/",
+  });
 };
 
 export const capitalize = (s: string): string => {

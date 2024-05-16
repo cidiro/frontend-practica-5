@@ -8,6 +8,7 @@ import * as $_layout from "./routes/_layout.tsx";
 import * as $film_id_ from "./routes/film/[id].tsx";
 import * as $films from "./routes/films.tsx";
 import * as $index from "./routes/index.tsx";
+import * as $projects from "./routes/projects.tsx";
 import * as $FilmCatalogue from "./islands/FilmCatalogue.tsx";
 import * as $FilmModal from "./islands/FilmModal.tsx";
 import * as $Filters from "./islands/Filters.tsx";
@@ -23,6 +24,7 @@ const manifest = {
     "./routes/film/[id].tsx": $film_id_,
     "./routes/films.tsx": $films,
     "./routes/index.tsx": $index,
+    "./routes/projects.tsx": $projects,
   },
   islands: {
     "./islands/FilmCatalogue.tsx": $FilmCatalogue,
