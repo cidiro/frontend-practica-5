@@ -1,6 +1,7 @@
 import { FunctionComponent } from "preact";
 import { Signal } from "@preact/signals";
 import { Film } from "../types.ts";
+import { pascalize } from "../lib.ts";
 
 type Props = {
   film: Signal<Film | null>;
@@ -16,7 +17,7 @@ const FilmModal: FunctionComponent<Props> = (
         <div class="modal">
           <div class="content">
             <div class="header">
-              <h1>{film.value.name}</h1>
+              <h1>{pascalize(film.value.name)}</h1>
               <button
                 class="button-close"
                 onClick={() => {
@@ -29,7 +30,7 @@ const FilmModal: FunctionComponent<Props> = (
             <div class="body">
               <img src={film.value.staticImageUrl} alt={film.value.name} />
               <div class="details">
-                <span class="brand">Brand: {film.value.brand}</span>
+                <span class="brand">Brand: {pascalize(film.value.brand)}</span>
                 <span class="iso">
                   Format:
                   {film.value.formatOneTwenty && film.value.formatThirtyFive
